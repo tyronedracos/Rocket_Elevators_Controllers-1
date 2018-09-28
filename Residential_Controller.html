@@ -1,0 +1,38 @@
+<head>
+</head>
+<body>
+<script src = "Residential_Controller.js" >
+</script>
+</body>
+//ACTIVATE LIGHT
+    function light (floorNumber, direction) {
+   
+        for (var button in elevator_controller.button_list) {
+            if ( floorNumber == button.floor && direction == button.direction ) {
+                button.status = "on"
+            console.log (b)
+            }
+        };
+        /* for (let b in buttons) {
+        if ( floorNumber == b.buttonFloor && direction == b.buttonDirection ) {
+            return b;
+    }*/
+    }
+    RequestFloor(Elevator, RequestedFloor) {
+        var elevator =  this.interior_floorList(Elevator, RequestedFloor,this.elevator_list);
+        console.log("you're in :", elevator);
+         this.bubbleSort(elevator.floorList, elevator.direction);
+         
+         
+ 
+     }
+ 
+ 
+     interior_floorList(Elevator, RequestedFloor, elevatorList){
+         for(var i = 0; i < elevatorList.length; i++){
+             if( Elevator === elevatorList[i].elevatorNumber){
+                 elevatorList[i].floorList.push(RequestedFloor);
+                 return elevatorList[i];
+             }
+         }          
+     }
