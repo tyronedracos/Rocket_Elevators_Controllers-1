@@ -81,6 +81,7 @@ class ElevatorController {
      }
         
      /*
+     
     //ACTIVATE LIGHT
     light (floorNumber, direction, list) {    
         list.forEach(function(button)  {
@@ -125,13 +126,13 @@ class ElevatorController {
                     return e;
                 }
                 /*else if (i+1 === elevlist.length){
-                    console.log("toto")
                     e.floorList.push(floorNumber);
                     return e;
                 }*/
             }  
         
     }
+    
     /*shortestList(elevlist){
         var length = 9999
        
