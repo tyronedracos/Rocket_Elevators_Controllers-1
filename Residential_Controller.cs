@@ -10,15 +10,26 @@ using Microsoft.Extensions.Logging;
 namespace aspnetapp {
     public class Program {
         public static void Main (string[] args) {
-            CreateWebHostBuilder (args).Build ().Run ();
-        }
+            let elevator_controller = new ElevatorController(10, 2);
+            elevator_controller.elevator_list[0].currentFloor = 3;
+            elevator_controller.elevator_list[0].direction = null;
+            elevator_controller.elevator_list[0].status = "IDLE";
+            elevator_controller.elevator_list[0].floorList = new List<int> ();
+
+            elevator_controller.elevator_list[1].currentFloor = 10;
+            elevator_controller.elevator_list[1].direction = null;
+            elevator_controller.elevator_list[1].status = "IDLE";
+            elevator_controller.elevator_list[1].floorList = new List<int>();
+            elevator_controller.requestElevator(10,"DOWN");
+            elevator_controller.RequestFloor(1,9);
+            //elevator_controller.requestElevator(3,"DOWN");
+            //elevator_controller.RequestFloor(1,2);
+                }
         public static IWebHostBuilder CreateWebHostBuilder (string[] args) =>
             WebHost.CreateDefaultBuilder (args)
             .UseStartup<Startup> ();
     }
-    /*function main (number_of_floor, number_of_elevator){
-        let elevator_controller = new ElevatorController(number_of_floor, number_of_elevator);
-}*/
+   
 public class Elevator {
     public int elevatorNumber;
     public int currentFloor;
@@ -247,5 +258,5 @@ public class ElevatorController {
         return retourElevator;
     }
 }
-//main(10,2)
+
 }
