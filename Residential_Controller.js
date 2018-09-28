@@ -192,10 +192,10 @@ class Button {
                 console.log("new list : ",Elevator.floorList);
                 console.log("next destination : ", Elevator.floorList[0])
             }
-            if (Elevator.floorList[0] > Elevator.currentFloor){
+            else if (Elevator.floorList[0] > Elevator.currentFloor){
                     this.moveUp(Elevator);
             }
-            if (Elevator.floorList[0] < Elevator.currentFloor){
+            else if (Elevator.floorList[0] < Elevator.currentFloor){
                 this.moveDown(Elevator); 
             }
             
