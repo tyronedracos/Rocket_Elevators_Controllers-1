@@ -24,7 +24,7 @@ namespace Residential_Controller
             elevator_controller.elevator_list[1].direction = null;
             elevator_controller.elevator_list[1].status = "IDLE";
             elevator_controller.elevator_list[1].floorList = new List<int>();
-
+            //HELLO, PLEASE ENTER VALID DATA TO OPERATE THE ELEVATOR
             elevator_controller.requestElevator(10, "DOWN");
             elevator_controller.RequestFloor(1, 9);
             elevator_controller.requestElevator(3,"DOWN");
