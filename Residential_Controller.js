@@ -1,22 +1,29 @@
 //MAIN
 function main (number_of_floor, number_of_elevator){
     let elevator_controller = new ElevatorController(number_of_floor, number_of_elevator);
-    elevator_controller.elevator_list[0].currentFloor = 3;
+    elevator_controller.elevator_list[0].currentFloor = 10;
     elevator_controller.elevator_list[0].direction = null;
     elevator_controller.elevator_list[0].status = "IDLE";
     elevator_controller.elevator_list[0].floorList = [];
 
-    elevator_controller.elevator_list[1].currentFloor = 10;
+    elevator_controller.elevator_list[1].currentFloor = 3;
     elevator_controller.elevator_list[1].direction = null;
     elevator_controller.elevator_list[1].status = "IDLE";
     elevator_controller.elevator_list[1].floorList = [];
-    elevator_controller.requestElevator(1,"UP");
-    elevator_controller.RequestFloor(1,6);
-    elevator_controller.requestElevator(3,"UP");
-    elevator_controller.RequestFloor(1,5);
-    elevator_controller.requestElevator(9,"DOWN");
+
+
+    //HELLO, PLEASE ENTER VALID DATA TO OPERATE THE ELEVATOR
+    // REQUEST ELEVATOR(USER LOCATION (FLOOR), DIRECTION)
+    //REQUEST FLOOR (ELEVATOR NUMBER(1 OR 2), DESTINATION(FLOOR))
+
+    elevator_controller.requestElevator(10,"DOWN");
+    elevator_controller.RequestFloor(1,3);
+    elevator_controller.requestElevator(3,"DOWN");
     elevator_controller.RequestFloor(1,2);
-    
+   // elevator_controller.requestElevator(9,"DOWN");
+    //elevator_controller.RequestFloor(2,2);
+
+
 }
 class Elevator {
     constructor(number_of_elevator, number_of_floor){
@@ -70,9 +77,10 @@ class ElevatorController {
      
          var Elevator = this.findElevator(floorNumber, direction, this.elevator_list)
         
-         console.log("User is at floor ", floorNumber, "and is going ", direction);
+         console.log("User is at floor ", floorNumber, "and wants to go ", direction);
          console.log("Elevator responding to the request:")
          console.log(Elevator);  
+         
          
          this.bubbleSort(Elevator.floorList, Elevator.direction)
          
@@ -80,8 +88,11 @@ class ElevatorController {
         
      }
         
+    
+    
+
+
      /*
-     
     //ACTIVATE LIGHT
     light (floorNumber, direction, list) {    
         list.forEach(function(button)  {
@@ -97,42 +108,37 @@ class ElevatorController {
     */
     //FIND ELEVATOR
     findElevator (floorNumber, direction, elevlist) {
-        
-       
+            
+            
             for(var i = 0; i < elevlist.length; i++){
                 var e = elevlist[i];
                 if(e.status === "STOPPED" && e.currentFloor === floorNumber && e.direction === direction){
                     e.floorList.push(floorNumber);
-                    
                     return e;
             
                 }else if(e.status === "IDLE" && e.currentFloor === floorNumber){
                     e.floorList.push(floorNumber);
-                    
                     return e;
     
                 }else if(e.currentFloor < floorNumber && (e.status === "MOVING" || "STOPPED") && e.direction === "UP" && direction === e.direction){  
                     e.floorList.push(floorNumber);
-                    
                     return e;
     
                 }else if(e.currentFloor > floorNumber && (e.status === "MOVING" || "STOPPED") && e.direction === "DOWN" && direction === e.direction){
                     e.floorList.push(floorNumber);
-                    
                     return e;
                 }else if(e.status === "IDLE"){
                     e.floorList.push(floorNumber);
-                   
                     return e;
                 }
                 /*else if (i+1 === elevlist.length){
+                    console.log("toto")
                     e.floorList.push(floorNumber);
                     return e;
                 }*/
             }  
         
     }
-    
     /*shortestList(elevlist){
         var length = 9999
        
@@ -261,7 +267,7 @@ class ElevatorController {
         
                 
     RequestFloor(Elevator, RequestedFloor) {
-        console.log("User is in elevator number ", Elevator, " and is going to floor ", RequestedFloor);
+        console.log("User is in elevator number ", Elevator, " and wants to go floor ", RequestedFloor);
         var Elevator =  this.interior_floorList(Elevator, RequestedFloor,this.elevator_list);
     
         this.bubbleSort(Elevator.floorList, Elevator.direction);
@@ -280,3 +286,4 @@ class ElevatorController {
   
  
 main(10,2)
+
