@@ -14,11 +14,13 @@ def main (number_of_floor, number_of_elevator):
     elevator_controller.elevator_list[1].status = "IDLE"
     elevator_controller.elevator_list[1].floorList = []
 
+    #HELLO, PLEASE ENTER VALID DATA TO OPERATE THE ELEVATOR
     elevator_controller.requestElevator(1,"UP")
     elevator_controller.RequestFloor(1,6)
 
     elevator_controller.requestElevator(3,"UP")
     elevator_controller.RequestFloor(1,5)
+
     elevator_controller.requestElevator(9,"DOWN")
     elevator_controller.RequestFloor(1,2)
 
